@@ -1,0 +1,1 @@
+{"processes":{"7dff24e9-36a2-42a6-9d4d-1e29e1364dd2":{"parent":"934d0b00-8322-469d-bbe3-ec3a34c84624","children":[]},"934d0b00-8322-469d-bbe3-ec3a34c84624":{"parent":null,"children":["7dff24e9-36a2-42a6-9d4d-1e29e1364dd2"]}},"files":{"/home/usuario/ull-esit-inf-dsi-21-22-prct06-generics-solid-alu0101320779/src/index.ts":["7dff24e9-36a2-42a6-9d4d-1e29e1364dd2"]},"externalIds":{}}
