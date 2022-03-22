@@ -11,28 +11,50 @@ export abstract class Fighter {
     getStats() {
         return this.stats;
       }
+
     /*setColor(color: ColorType) {
       this.color = color;
     }*/
+
     abstract print(): string;
+  }
+
+
+export class Marvel extends Fighter {
+    private readonly sides = 4;
+  
+    constructor(name: string,peso_altura: number[],stats: number[], 
+        private universo: string = 'Marvel') {
+      super(name, peso_altura, stats);
+    }
+  
+    getUniverso() {
+      return this.universo;
+    }
+  
+    print():string {
+      return `Nombre ${this.getName()}`+'\n'+
+             `Peso y altura: ${this.getPesoA()}`+'\n'+
+             `Stats: ${this.getStats()}`;
+    }
   }
 
 export class Pokedex {
 
     /**
-     * @param nombre El nombre del pokemon.
+     * @param name El name del pokemon.
      * @param peso_altura La altura y el peso del pokemon.
      * @param tipo El tipo del pokemon.
      * @param stats Los stats del pokemon (HP, ataque, defensa, ataque especial, defensa especial, velocidad).
      */
-    public nombre: string;
+    public name: string;
     private peso_altura: number[];
     public tipo: string;
     public stats: number[] 
 
-    constructor(nombre: string, peso_altura: number[], tipo: string, stats: number[] ){
-
-        this.nombre = nombre;
+    constructor(name: string, peso_altura: number[], tipo: string, stats: number[] ){
+        
+        this.name = name;
         this.peso_altura = peso_altura;
         this.tipo = tipo;
         this.stats = stats;
@@ -43,7 +65,7 @@ export class Pokedex {
      * @returns Un `string` con la información del pokemon introducido.
      */
     public data(): string{
-        return 'Nombre: ' + String(this.nombre) 
+        return 'name: ' + String(this.name) 
             +'\nPeso y altura: '+String(this.peso_altura)
             +'\nTipo: '+String(this.tipo)
             +'\nStats: '+String(this.stats)
@@ -126,9 +148,9 @@ export class Combat{
                     if (pokemons[k].stats[0] < 0){
                         pokemons[k].stats[0] = 0;
                     }
-                    salida += (`\n${this.pokemons[j].nombre} ha infligido ${(damage.toFixed(0))} puntos de daño sobre ${this.pokemons[k].nombre}\n
-                    ${this.pokemons[0].nombre} HP: ${pokemons[0].stats[0].toFixed(0)}
-                    ${this.pokemons[1].nombre} HP: ${pokemons[1].stats[0].toFixed(0)}`);
+                    salida += (`\n${this.pokemons[j].name} ha infligido ${(damage.toFixed(0))} puntos de daño sobre ${this.pokemons[k].name}\n
+                    ${this.pokemons[0].name} HP: ${pokemons[0].stats[0].toFixed(0)}
+                    ${this.pokemons[1].name} HP: ${pokemons[1].stats[0].toFixed(0)}`);
                     k--;
                 }
             } 
@@ -143,7 +165,9 @@ let secondPokemon = new Pokedex('Charmander', [8.5, 0.6], 'FIRE',[39,52,43,60,50
 let thirdPokemon = new Pokedex('Squirtle', [9.0, 0.5], 'WATER',[44,48,65,50,64,43]);
 let fourthPokemon = new Pokedex('Pikachu', [6.0, 0.4], 'ELECTRIC',[35,55,40,50,50,90]);
 
-let pokemons = [firstPokemon, secondPokemon, thirdPokemon, fourthPokemon];
-let lucha = new Combat([firstPokemon, secondPokemon]);
+let firstHero = new Marvel('Iron Man', [102, 1.85], [200,400,500,65,65,45]);
 
-console.log(`${lucha.start()}`)
+let pokemons = [firstPokemon, secondPokemon, thirdPokemon, fourthPokemon];
+let firstFight = new Combat([firstPokemon, firstHero]);
+
+console.log(`${firstFight.start()}`)
