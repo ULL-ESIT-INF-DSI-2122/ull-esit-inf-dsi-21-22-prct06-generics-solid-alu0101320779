@@ -1,19 +1,26 @@
 import 'mocha';
 import {expect} from 'chai';
-import {add} from '../src/index';
+import {NumericSearchableCollection} from '../src/index';
+import {StringSearchableCollection} from '../src/index';
 
+const myCollection =new NumericSearchableCollection([7, 6, 10, 10, 5]);
+const myCollection1 = new StringSearchableCollection(['hola', 'adios', 'solid']);
 
-describe('add function tests', () =>{
-    it('add(1, 8) returns value 9', () =>{
-        expect(add(1, 8)).to.be.equal(9);
+describe('search function tests', () =>{
+    it('search returns value [10, 10]', () =>{
+        expect(myCollection.search(10)).to.be.equal([ 10, 10 ]);
     });
 
-    it('add(-1, 8) returns value 9', () =>{
-        expect(add(1, 8)).to.be.equal(9);
+    it('search returns value [hola]', () =>{
+        expect(myCollection1.search('hola')).to.be.equal([ 'hola' ]);
     });
 
-    it('add(1.2, 3.5) returns value 4.7', () =>{
-        expect(add(1.2, 3.5)).to.be.equal(4.7);
+    it('search returns value [10, 10]', () =>{
+        expect(myCollection.search(8)).to.be.equal([]);
+    });
+
+    it('search returns value [hola]', () =>{
+        expect(myCollection1.search('array')).to.be.equal([]);
     });
 
 });
