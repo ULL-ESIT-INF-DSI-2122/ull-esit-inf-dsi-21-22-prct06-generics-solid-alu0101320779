@@ -43,7 +43,7 @@ describe('getItem function tests', () =>{
 });
 
 describe('removeItem function tests', () =>{
-    it('removeItem() returns value ', () =>{
+    it('removeItem() delete a value ', () =>{
         expect(myCollection4.getItem(2)).to.be.equal(undefined);
     });
 });
