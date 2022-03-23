@@ -31,16 +31,17 @@ export abstract class SearchableCollection<T> implements Collectable<T>, Searcha
     abstract search(termino: T): T[];
 }
 
-export class NumericSearchableCollection<T> extends SearchableCollection<T>{
-    constructor(items: T[]) {
+export class NumericSearchableCollection extends SearchableCollection<number>{
+    constructor(items: number[]) {
         super(items);
       }
     /**
-     * 
+     * Esta función va a recibir un termino `number` de búsqueda 
+     * y va a devolver un `array` con las coincidencias encontradas
      * @param termino Este será el término a buscar
      * @returns Devolverá un array con los terminos encontrados
      */
-    search(termino: T): T[] {
+    search(termino: number): number[] {
         let newArray = []
         for(let i = 0; i < this.getNumberOfItems(); i++){
             if (this.items[i] === termino){
@@ -56,7 +57,8 @@ export class StringSearchableCollection<T> extends SearchableCollection<T>{
         super(items);
       }
     /**
-     * 
+     * Este método `search` se le pasa un término de búsqueda tipo `string` 
+     * y se le devuelve un array con las coincidencias
      * @param termino Buscará el término `string`
      * @returns Devolverá un arrray con las coincidencias.
      */
@@ -75,5 +77,7 @@ const myCollection =new NumericSearchableCollection([7, 6, 10, 10, 5]);
 const myCollection1 = new StringSearchableCollection(['hola', 'adios', 'solid']);
 
 console.log(myCollection.search(10));
-
 console.log(myCollection1.search('hola'));
+
+myCollection.addItem(7)
+console.log(myCollection)
