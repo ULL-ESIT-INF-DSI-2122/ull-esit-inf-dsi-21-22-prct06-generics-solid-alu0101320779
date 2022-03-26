@@ -25,7 +25,10 @@ Para la realización de este ejercicio lo que hice fue una interfaz bastante sen
     searchCategoría(termino: T): T | undefined;
   }
 ```
-Clase abstracta
+
+Se crea la clase abstracta `BasicStreamableCollection<T>` en la que se definen los getters y el método `searchNombre` además de crear los métodos abstractos que se modularán en las clases que extiendan esta clase.
+
+## Clase abstracta
 ```typescript
   export abstract class BasicStreamableCollection<T> implements Streamable<T> {
     constructor(protected items: T[]){
@@ -51,9 +54,9 @@ Clase abstracta
     abstract searchCategoría(termino: T): T | undefined;
 }
 ```
+Las clases implementadas que van a extender la clase abstracta anteriormente explicada van a ser tres, en la clase `MoviesStreamableCollection<T>` se va a recibir como argumento un array con la información de la película, en cada uno de los métodos se hacen condicionales `if` en el que se compara si el índice en el que se encuentra la información que se busca coincide con el término de búsqueda. Esto mismo sucede con los demás métodos, se modularán de la misma manera todos los métodos. 
 
-Subclases
-Películas
+## Películas
 ```typescript
   export class MoviesStreamableCollection<T> extends BasicStreamableCollection<T>{
     constructor(items: T[]) {
@@ -84,7 +87,7 @@ Películas
     }
 }
 ```
-Series
+## Series
 ```typescript
 export class SeriesStreamableCollection<T> extends BasicStreamableCollection<T>{
     constructor(items: T[]) {
@@ -115,7 +118,7 @@ export class SeriesStreamableCollection<T> extends BasicStreamableCollection<T>{
     }
 }
 ```
-Documentales
+## Documentales
 ```typescript
 export class DocuStreamableCollection<T> extends BasicStreamableCollection<T>{
     constructor(items: T[]) {
