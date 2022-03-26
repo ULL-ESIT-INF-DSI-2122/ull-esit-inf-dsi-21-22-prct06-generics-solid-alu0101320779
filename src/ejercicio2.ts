@@ -44,7 +44,16 @@
     abstract searchNovedades(): T | undefined;
     abstract searchCategoría(termino: T): T | undefined;
 }
-
+/**
+ * @class La clase sirve para llevar a cabo la búsqueda de películas con filtros, hereda de la clase abstracta 
+ * @param items Se recibe los datos de la película
+ * @method searchAño El método busca la coincidencia en el índice en el que está el año
+ * con el `termino` de búsqueda y lo devuelve.
+ * @method searchCategoría El método busca la coincidencia en el índice en el que está la categoría
+ * con el `termino` de búsqueda y lo devuelve.
+ * @method searchNovedades El método mira si el año de publicación de la película es mayor que 2015 
+ * en el caso de que se cumpla esta condición es una novedad
+ */
 export class MoviesStreamableCollection<T> extends BasicStreamableCollection<T>{
     constructor(items: T[]) {
         super(items);
@@ -74,6 +83,16 @@ export class MoviesStreamableCollection<T> extends BasicStreamableCollection<T>{
     }
 }
 
+/**
+ * @class La clase sirve para llevar a cabo la búsqueda de series con filtros, hereda de la clase abstracta 
+ * @param items Se recibe los datos de la series
+ * @method searchAño El método busca la coincidencia en el índice en el que está el año
+ * con el `termino` de búsqueda y lo devuelve.
+ * @method searchCategoría El método busca la coincidencia en el índice en el que está la categoría
+ * con el `termino` de búsqueda y lo devuelve.
+ * @method searchNovedades El método mira si el año de publicación de la serie es mayor que 2015 
+ * en el caso de que se cumpla esta condición es una novedad.
+ */
 export class SeriesStreamableCollection<T> extends BasicStreamableCollection<T>{
     constructor(items: T[]) {
         super(items);
@@ -102,7 +121,16 @@ export class SeriesStreamableCollection<T> extends BasicStreamableCollection<T>{
         return undefined
     }
 }
-
+/**
+ * @class La clase sirve para llevar a cabo la búsqueda de documentales con filtros, hereda de la clase abstracta 
+ * @param items Se recibe los datos de la documentales
+ * @method searchAño El método busca la coincidencia en el índice en el que está el año
+ * con el `termino` de búsqueda y lo devuelve.
+ * @method searchCategoría El método busca la coincidencia en el índice en el que está la categoría
+ * con el `termino` de búsqueda y lo devuelve.
+ * @method searchNovedades El método mira si el año de publicación de la documentales es mayor que 2015 
+ * en el caso de que se cumpla esta condición es una novedad
+ */
 export class DocuStreamableCollection<T> extends BasicStreamableCollection<T>{
     constructor(items: T[]) {
         super(items);
