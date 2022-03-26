@@ -11,7 +11,10 @@ title: "Práctica 6"
 
 
 # Ejercicio DSIFlix
-Interfaz
+
+Para la realización de este ejercicio lo que hice fue una interfaz bastante sencilla en la que añado getters de los items y de la longitud del array, una serie de métodos para la búsqueda de películas, series y documentales, ya sea por año, nombre, categorías o novedades, estos métodos recibiran o el `termino: T` para la búsqueda de información o bien no reciben argumentos como puede ser el caso del método `searchNovedades` y devolverán o un tipo `<T>` o un `undefined` en el caso de que no se encuentre lo que haya buscado el usuario.
+
+## Interfaz
 ```typescript
  export interface Streamable<T> {
     getItem(index: number): T;
